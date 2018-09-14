@@ -1,0 +1,64 @@
+<div class="match-list">
+    <div class="matches-body">
+        <div class="matches-header">
+            <div>
+                <div class="competition-standing-header">
+                    <span *ngIf="!standingsToggled" [ngClass]="{'nope' : competitions.length != 1}" (click)="toggleStandings()" class="filter-button">Show standings</span>
+                    <span *ngIf="standingsToggled" (click)="toggleStandings()" class="filter-button">Hide standings</span>
+                </div>
+            </div>
+            <div class="day-filters">
+                <span *ngIf="!dayFilterToggled" (click)="togglePrevMatches()" class="filter-button"><fa-icon [icon]="circleLeft" class="icon"></fa-icon> Matches from last 10 days</span>
+                <span *ngIf="dayFilterToggled" (click)="toggleNextMatches()" class="filter-button">Matches from next 10 days <fa-icon [icon]="circleRight" class="icon"></fa-icon></span>
+            </div>
+        </div>
+        <div class="competition-header">
+            <fa-icon [icon]="selectedIcon" class="icon"></fa-icon> Currently selected:
+        </div>
+        <div class="select-holder">
+            <div class="select-button-wrapper" *ngFor="let competition of competitions">
+                <button (click)="toggleCompetition(competition.id)" class="select-button" >{{competition.name}}</button>
+            </div>
+        </div>
+        <div class="row">
+            <app-standings *ngIf="standingsToggled"></app-standings>
+        </div>
+        <div *ngIf="matches.length == 0 && competitions.length == 1" class="no-matches">
+            <h6><fa-icon [icon]="nothingIcon" class="icon"></fa-icon> No matches found for this period </h6>
+        </div>
+        <div *ngIf="matches.length == 0 && competitions.length != 1" class="spinner">
+            <img src="../../assets/three-dots.svg" alt="spinner">
+        </div>
+        <div class="row">
+            <div *ngFor="let match of matches" class="col-sm-6 col-6 col-md-3 card-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <div *ngIf="match.status == 'FINISHED'" [ngClass]="{'draw' : match.score.result.homeTeam == match.score.result.awayTeam && match.status != 'SCHEDULED'}">
+                            <h6 class="card-title" >
+                                <fa-icon *ngIf="match.score.result.homeTeam > match.score.result.awayTeam" [icon]="winnerIcon"></fa-icon> {{match.homeTeam}}: {{match.score.result.homeTeam}}
+                            </h6>
+                            <h6 class="card-title">
+                                <fa-icon *ngIf="match.score.result.awayTeam > match.score.result.homeTeam" [icon]="winnerIcon"></fa-icon> {{match.awayTeam}}: {{match.score.result.awayTeam}}
+                            </h6>
+                        </div>
+                        <div *ngIf="match.status != 'FINISHED'">
+                            <h6 class="card-title">
+                                {{match.homeTeam}}
+                            </h6>
+                            <h6 class="card-title">
+                                {{match.awayTeam}}
+                            </h6>
+                        </div>
+                        <div class="card-info">
+                            <h6 class="card-subtitle mb-2 text-muted">{{match.competition}}</h6>
+                            <p class="card-subtitle mb-2 text-muted">{{match.date.slice(0,10)}} - {{match.date.slice(11,16)}}</p>
+                            <p class="card-subtitle mb-2 text-muted"> {{match.status}} </p>
+                            <p class="card-text"></p>
+                        </div>
+                        <img [src]="getCompetitionImage(match.competition)" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+.ptable table{
+    border-collapse: collapse;
+    border: white solid 2px;
+}
+
+.ptable {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    animation: tableIn 0.5s ease-in both;
+}
+
+@keyframes tableIn {
+    from{opacity: 0}
+    to{opacity: 1}
+}
+
+.table-image {
+    width: 20px;
+}
+
+h6 {
+    padding-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th{
+    background-color: black;
+    color: white;
+}
+
+.wpos{
+    text-align: left;
+}
+
+.wpos td{
+    color: white;
+}
+
+.pos{
+    text-align: center;
+}
+
+.pos td{
+    color: #ff7b21;
+}
+
+table .col{
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.wpos:hover{
+    background-color: white;
+}
+
+.wpos:hover td{
+    color: black;
+}
+
+.pos:hover{
+    background-color: white;
+}
+
+.pos:hover td{
+    color: #000000;
+}
+

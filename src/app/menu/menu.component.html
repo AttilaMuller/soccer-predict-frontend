@@ -1,0 +1,14 @@
+<div class="menu">
+    <div>
+        <div class="menu-item">
+            Competitions
+        </div>
+        <div class="header-breaker"></div>
+    </div>
+    <div *ngFor="let competition of competitionsMenu">
+        <div (click)="toggleCompetition(competition.id)" class="menu-item menu-subitem">
+            <img [src]="competition.pictureUrl"> {{competition.name}}
+        </div>
+        <div class="breaker"></div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+.match-list{
+    min-height: 600px;
+    color: white;
+    background-image: linear-gradient(#0b3500, #000000);
+    margin-left: -15px;
+}
+
+.filter-button {
+    font-size: 1vw;
+    border: solid 0.1rem;
+    border-radius: 50px;
+    padding: 5px 10px;
+    -webkit-transition-duration: 280ms;
+}
+
+.select-button {
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 0.7vw;
+    border: solid 0.1rem;
+    border-radius: 10px;
+    padding: 5px 10px;
+    -webkit-transition-duration: 280ms;
+}
+
+.filter-button:hover {
+    background-color: white;
+    cursor: pointer;
+    border: white;
+    color: black;
+}
+
+.smaller-button{
+    font-size: 0.7vw;
+}
+
+
+.matches-body {
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.competition-header {
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.competition-standing-header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.no-matches {
+    padding-left: 5px;
+}
+
+.spinner img {
+    width: 100px;
+    padding-left: 20px;
+}
+
+.matches-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.draw {
+    color: #b4b4b4;
+}
+
+.card-info {
+    font-size: 0.8vw;
+}
+
+@keyframes fadeIn {
+    from{color: white;}
+    to{color: #35a500;}
+}
+
+.day-filters {
+    padding-top: 15px;
+}
+
+.nope:hover {
+    cursor: not-allowed;
+}
+
+.card {
+    width: 18vw;
+    color: white;
+    background: #151515;
+    border: white solid 1px;
+    border-radius: 20px;
+}
+
+.card:hover {
+    cursor: pointer;
+    animation: cardHover 0.5s ease both;
+}
+
+@keyframes cardHover {
+    from { border-radius: 20px; transform: scale(1); }
+    to { border-radius: 25px; transform: scale(1.06); }
+}
+
+
+.card img{
+    width: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.card-wrapper {
+    padding: 10px;
+}
+
+.card-body {
+    background: transparent;
+
+}
+
+.row {
+    padding-top: 10px;
+}
+
+.select-holder {
+    display: flex;
+}
+
+.select-button-wrapper {
+    padding-left: 5px;
+}

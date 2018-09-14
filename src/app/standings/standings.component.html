@@ -1,0 +1,61 @@
+<div *ngIf="standings.length != 0 && competitions[0].id != 2001" class="ptable">
+    <table>
+        <tr class="col">
+            <th>#</th>
+            <th>Team</th>
+            <th>GP</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>GA</th>
+            <th>GF</th>
+            <th>GD</th>
+            <th>PTS</th>
+        </tr>
+        <tr *ngFor="let standing of standings" class="wpos">
+            <td>{{standing.position}}</td>
+            <td *ngIf="standing.team.crestUrl"><img (error)="standing.team.crestUrl = ''" class="table-image" src="{{standing.team.crestUrl}}" alt=""> {{standing.team.name}}</td>
+            <td *ngIf="!standing.team.crestUrl"><fa-icon [icon]="teamIcon" class="icon"></fa-icon> {{standing.team.name}}</td>
+            <td>{{standing.playedGames}}</td>
+            <td>{{standing.won}}</td>
+            <td>{{standing.draw}}</td>
+            <td>{{standing.lost}}</td>
+            <td>{{standing.goalsAgainst}}</td>
+            <td>{{standing.goalsFor}}</td>
+            <td>{{standing.goalDifference}}</td>
+            <td>{{standing.points}}</td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="competitions[0].id == 2001"  class="ptable">
+    <div *ngFor="let group of uefaStandings">
+        <h6>Group {{group.group.slice(6,7)}}</h6>
+        <table>
+            <tr class="col">
+                <th>#</th>
+                <th>Team</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GA</th>
+                <th>GF</th>
+                <th>GD</th>
+                <th>PTS</th>
+            </tr>
+            <tr *ngFor="let standing of group.table" class="wpos">
+                <td>{{standing.position}}</td>
+                <td *ngIf="standing.team.crestUrl"><img  (error)="standing.team.crestUrl = ''" class="table-image" src="{{standing.team.crestUrl}}" alt=""> {{standing.team.name}}</td>
+                <td *ngIf="!standing.team.crestUrl"><fa-icon [icon]="teamIcon" class="icon"></fa-icon> {{standing.team.name}}</td>
+                <td>{{standing.playedGames}}</td>
+                <td>{{standing.won}}</td>
+                <td>{{standing.draw}}</td>
+                <td>{{standing.lost}}</td>
+                <td>{{standing.goalsAgainst}}</td>
+                <td>{{standing.goalsFor}}</td>
+                <td>{{standing.goalDifference}}</td>
+                <td>{{standing.points}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
