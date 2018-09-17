@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faBolt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faClock, faCalendarAlt, faCheckCircle, faArrowCircleLeft, faArrowCircleRight, faBolt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import {MatchService} from '../services/match.service';
 import {Competition, Match} from '../models';
 import {CompetitionService} from '../services/competition.service';
@@ -17,15 +17,19 @@ export class MatchListComponent implements OnInit {
     circleRight = faArrowCircleRight;
     winnerIcon = faBolt;
     nothingIcon = faTimesCircle;
+    calendarIcon = faCalendarAlt;
+    clockIcon = faClock;
+    infoIcon = faInfoCircle;
 
     matches: Match[] = [];
     competitions: Competition[] = [];
     allCompetitions: Competition[] = [];
     standingsToggled = false;
+    today = new Date().toISOString().slice(0, 10);
+
     dayFilterToggled = true;
 
     constructor(private matchService: MatchService, private competitionService: CompetitionService, private standingsService: StandingsService) { }
-
     ngOnInit() {
         this.matchService.matchesChanged.subscribe((matches: Match[]) => this.matches = matches);
         this.matchService.dayFilterChanged.subscribe((toggle: boolean) => this.dayFilterToggled = toggle);

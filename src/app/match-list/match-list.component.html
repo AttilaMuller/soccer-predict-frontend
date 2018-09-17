@@ -33,12 +33,13 @@
             <div *ngFor="let match of matches" class="col-sm-6 col-6 col-md-3 card-wrapper">
                 <div class="card">
                     <div class="card-body">
-                        <div *ngIf="match.status == 'FINISHED'" [ngClass]="{'draw' : match.score.result.homeTeam == match.score.result.awayTeam && match.status != 'SCHEDULED'}">
-                            <h6 class="card-title" >
-                                <fa-icon *ngIf="match.score.result.homeTeam > match.score.result.awayTeam" [icon]="winnerIcon"></fa-icon> {{match.homeTeam}}: {{match.score.result.homeTeam}}
-                            </h6>
+                        <div *ngIf="match.status == 'FINISHED'" >
+                            <div class="card-title" >
+                                <fa-icon *ngIf="match.score.result.homeTeam > match.score.result.awayTeam" [icon]="winnerIcon"></fa-icon> {{match.homeTeam}} <span class="score">{{match.score.result.homeTeam}}</span>
+
+                            </div>
                             <h6 class="card-title">
-                                <fa-icon *ngIf="match.score.result.awayTeam > match.score.result.homeTeam" [icon]="winnerIcon"></fa-icon> {{match.awayTeam}}: {{match.score.result.awayTeam}}
+                                <fa-icon *ngIf="match.score.result.awayTeam > match.score.result.homeTeam" [icon]="winnerIcon"></fa-icon> {{match.awayTeam}} <span class="score">{{match.score.result.awayTeam}}</span>
                             </h6>
                         </div>
                         <div *ngIf="match.status != 'FINISHED'">
@@ -49,11 +50,12 @@
                                 {{match.awayTeam}}
                             </h6>
                         </div>
+                        <div class="header-breaker"></div>
                         <div class="card-info">
-                            <h6 class="card-subtitle mb-2 text-muted">{{match.competition}}</h6>
-                            <p class="card-subtitle mb-2 text-muted">{{match.date.slice(0,10)}} - {{match.date.slice(11,16)}}</p>
-                            <p class="card-subtitle mb-2 text-muted"> {{match.status}} </p>
-                            <p class="card-text"></p>
+                            <h6 class="card-subtitle mb-2 text-muted card-competition"><fa-icon [icon]="infoIcon" class="icon"></fa-icon> {{match.competition}}</h6>
+                            <div *ngIf="today == match.date.slice(0,10)"><fa-icon [icon]="calendarIcon" class="icon"></fa-icon> {{match.date.slice(0,10)}} (Today)</div>
+                            <div *ngIf="today != match.date.slice(0,10)"><fa-icon [icon]="calendarIcon" class="icon"></fa-icon> {{match.date.slice(0,10)}}</div>
+                            <div><fa-icon [icon]="clockIcon" class="icon"></fa-icon> {{match.date.slice(11,16)}}</div>
                         </div>
                         <img [src]="getCompetitionImage(match.competition)" alt="">
                     </div>
