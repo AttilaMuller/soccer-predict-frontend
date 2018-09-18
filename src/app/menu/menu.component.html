@@ -6,7 +6,7 @@
         <div class="header-breaker"></div>
     </div>
     <div *ngFor="let competition of competitionsMenu">
-        <div (click)="toggleCompetition(competition.id)" class="menu-item menu-subitem">
+        <div [routerLink]="['']" (click)="toggleCompetition(competition.id)" class="menu-item menu-subitem">
             <img [src]="competition.pictureUrl"> {{competition.name}}
         </div>
         <div class="breaker"></div>

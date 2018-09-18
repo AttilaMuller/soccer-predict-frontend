@@ -82,6 +82,7 @@
     border-radius: 25% 10%;
     background: white;
     color: black;
+    font-weight: bold;
 }
 
 @keyframes fadeIn {
@@ -111,6 +112,10 @@
     animation: cardHover 0.5s ease both;
 }
 
+.card-wrapper:focus {
+    outline: 0;
+}
+
 @keyframes cardHover {
     from { border-radius: 20px; transform: scale(1); }
     to { border-radius: 25px; transform: scale(1.06); }
@@ -135,7 +140,7 @@
 .header-breaker{
     background : white;
     width: 130px;
-    height: 2px;
+    height: 1px;
 }
 
 .card-wrapper {

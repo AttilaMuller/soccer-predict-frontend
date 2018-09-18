@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.top-menu img:focus {
+    outline:0;
+}
+
 .login-button {
   font-size: 1vw;
   border: solid 0.1rem;

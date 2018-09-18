@@ -25,6 +25,10 @@
 
 }
 
+.menu-subitem:focus {
+    outline: 0;
+}
+
 @keyframes menuHover {
     from{}
     to{padding-left: 10px}

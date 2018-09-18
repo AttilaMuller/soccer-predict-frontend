@@ -81,6 +81,10 @@ export class CompetitionService {
     this.competitionsChanged.next(this.competitions);
   }
 
+  getAllCompetitions() {
+      return this.allCompetitions;
+  }
+
   setAllCompetitions() {
       this.competitionsChanged.next(this.allCompetitions);
   }

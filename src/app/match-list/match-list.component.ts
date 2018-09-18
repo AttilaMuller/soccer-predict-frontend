@@ -35,8 +35,7 @@ export class MatchListComponent implements OnInit {
         this.matchService.dayFilterChanged.subscribe((toggle: boolean) => this.dayFilterToggled = toggle);
         this.competitionService.competitionsChanged.subscribe((competitions: Competition[]) => this.competitions = competitions);
         this.standingsService.standingsToggled.subscribe((standingToggled: boolean) => this.standingsToggled = standingToggled);
-        this.allCompetitions = this.competitions;
-        this.matchService.getMatches(this.competitions);
+        this.allCompetitions = this.competitionService.getAllCompetitions();
     }
 
     getCompetitionImage(name: string) {
