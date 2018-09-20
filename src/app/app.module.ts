@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatchListComponent } from './match-list/match-list.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { StandingsComponent } from './standings/standings.component';
 import {CompetitionService} from './services/competition.service';
 import {MatchService} from './services/match.service';
 import {StandingsService} from './services/standings.service';
 import {RouterModule, Routes} from '@angular/router';
 import { MatchComponent } from './match/match.component';
+import {AuthService} from './auth/auth.service';
+import {AuthInterceptor} from './auth/auth.interceptor';
 
 const appRoutes: Routes = [
     { path: '', component: MatchListComponent },
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
         HttpClient,
         CompetitionService,
         MatchService,
-        StandingsService
+        StandingsService,
+        AuthService,
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     ],
     bootstrap: [AppComponent]
 })

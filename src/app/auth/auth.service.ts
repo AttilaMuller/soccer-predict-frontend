@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
-import {HttpClient} from '@angular/common/http';
 
 (window as any).global = window;
 
@@ -17,7 +15,7 @@ export class AuthService {
         scope: 'openid profile'
     });
 
-    constructor(public router: Router, private http: HttpClient) {}
+    constructor() {}
 
     public login(): void {
         this.auth0.authorize();
@@ -28,9 +26,7 @@ export class AuthService {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 window.location.hash = '';
                 this.setSession(authResult);
-                this.router.navigate(['/home']);
             } else if (err) {
-                this.router.navigate(['/home']);
                 console.log(err);
             }
         });
@@ -49,8 +45,6 @@ export class AuthService {
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
-        // Go back to the home route
-        this.router.navigate(['/']);
     }
 
     public isAuthenticated(): boolean {
