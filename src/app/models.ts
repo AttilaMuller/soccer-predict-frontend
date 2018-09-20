@@ -31,18 +31,6 @@ export interface Team {
     crestUrl: string;
 }
 
-export interface Player {
-    id: number;
-    name: string;
-    position: string;
-}
-
-export interface Coach {
-    id: number;
-    name: string;
-    nationality: string;
-}
-
 export interface Match {
     id: number;
     competition: string;
@@ -69,4 +57,3 @@ export interface User {
     familyName?: string;
     pictureUrl?: string;
 }
-

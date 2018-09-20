@@ -15,8 +15,8 @@ export class MatchListComponent implements OnInit {
     selectedIcon = faCheckCircle;
     circleLeft = faArrowCircleLeft;
     circleRight = faArrowCircleRight;
-    winnerIcon = faBolt;
     nothingIcon = faTimesCircle;
+    winnerIcon = faBolt;
     calendarIcon = faCalendarAlt;
     clockIcon = faClock;
     infoIcon = faInfoCircle;

@@ -1,3 +1,35 @@
-<div class="match">
-  {{ activeMatch.competition }}
+<div class="match-container">
+    <div>
+        <fa-icon [icon]="commentsIcon" class="icon"></fa-icon> Discussion on {{basicMatchInfo.homeTeam}} vs {{basicMatchInfo.awayTeam}}
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div *ngIf="basicMatchInfo.status == 'FINISHED'" >
+                    <div class="card-title" >
+                        <fa-icon *ngIf="basicMatchInfo.score.result.homeTeam > basicMatchInfo.score.result.awayTeam" [icon]="winnerIcon"></fa-icon> {{basicMatchInfo.homeTeam}} <span class="score">{{basicMatchInfo.score.result.homeTeam}}</span>
+
+                    </div>
+                    <h6 class="card-title">
+                        <fa-icon *ngIf="basicMatchInfo.score.result.awayTeam > basicMatchInfo.score.result.homeTeam" [icon]="winnerIcon"></fa-icon> {{basicMatchInfo.awayTeam}} <span class="score">{{basicMatchInfo.score.result.awayTeam}}</span>
+                    </h6>
+                </div>
+                <div *ngIf="basicMatchInfo.status != 'FINISHED'">
+                    <h6 class="card-title">
+                        {{basicMatchInfo.homeTeam}}
+                    </h6>
+                    <h6 class="card-title">
+                        {{basicMatchInfo.awayTeam}}
+                    </h6>
+                </div>
+                <div class="header-breaker"></div>
+                <div class="card-info">
+                    <h6 class="card-subtitle mb-2 text-muted card-competition"><fa-icon [icon]="infoIcon" class="icon"></fa-icon> {{basicMatchInfo.competition}}</h6>
+                    <div> <fa-icon [icon]="calendarIcon" class="icon"></fa-icon> {{basicMatchInfo.date.slice(0,10)}}</div>
+                    <div><fa-icon [icon]="clockIcon" class="icon"></fa-icon> {{basicMatchInfo.date.slice(11,16)}}</div>
+                </div>
+                <img [src]="getCompetitionImage(basicMatchInfo.competition)" alt="competition">
+            </div>
+        </div>
+    </div>
 </div>

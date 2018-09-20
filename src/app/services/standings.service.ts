@@ -16,7 +16,7 @@ export class StandingsService {
     standingsToggled: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private http: HttpClient, private competitionService: CompetitionService) {
-        this.competitionService.competitionsChanged.subscribe((competitions: Competition[]) => this.competitions = competitions)
+        this.competitionService.competitionsChanged.subscribe((competitions: Competition[]) => this.competitions = competitions);
         this.setUefaStanding();
     }
 
@@ -38,4 +38,5 @@ export class StandingsService {
     setStandingsToggled(standingsToggled: boolean) {
         this.standingsToggled.next(standingsToggled);
     }
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Competition, Match} from '../models';
+import {Competition, Match } from '../models';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {CompetitionService} from './competition.service';
@@ -10,6 +10,8 @@ import {CompetitionService} from './competition.service';
 export class MatchService {
 
     matchesChanged: Subject<Array<Match>> = new BehaviorSubject<Array<Match>>([]);
+    allMatchesChanged: Subject<Array<Match>> = new BehaviorSubject<Array<Match>>([]);
+    matchChanged: Subject<Match> = new BehaviorSubject<Match>(null);
     dayFilterChanged: Subject<boolean> = new BehaviorSubject<boolean>(false);
     private previousMatches: Match[] = [];
     private nextMatches: Match[] = [];
@@ -31,9 +33,15 @@ export class MatchService {
             .subscribe((matches: Match[]) => {
                 this.nextMatches = matches;
                 this.allMatches = [...this.allMatches, ...matches];
+                this.allMatchesChanged.next(this.allMatches);
                 this.matchesChanged.next(this.nextMatches);
             });
     };
+
+    getMatch(id: number) {
+        this.matchChanged.next(this.allMatches.find( (match: Match) => match.id == id))
+    }
+
 
     private mapCompetitions(competitions: Competition[]) {
         return competitions.map((competition: Competition) => competition.id)
@@ -46,11 +54,6 @@ export class MatchService {
     toggleDayFilter(toggle: boolean) {
         this.dayFilterChanged.next(toggle);
     }
-
-    getOneMatch = (id: number) => {
-        let allMatches = [...this.previousMatches, ...this.nextMatches];
-        return allMatches.find( (match: Match) => match.id == id);
-    };
 
     getSpecificMatches = (competitions: Competition[], period: string) => {
         if (competitions.length <= 1) {
