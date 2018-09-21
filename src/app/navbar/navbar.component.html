@@ -1,7 +1,13 @@
 <div class="top-menu">
-  <ul>
-    <li><img [routerLink]="['']" (click)="toggleCompetitions()" [src]="logo"></li>
-    <li *ngIf="!isLogeddIn()" (click)="login()" class="login-button"> Login with Google <fa-icon [icon]="loginIcon" class="icon"></fa-icon> </li>
-    <li *ngIf="isLogeddIn()" (click)="logout()" class="login-button"> Logout <fa-icon [icon]="loginIcon" class="icon"></fa-icon> </li>
-  </ul>
+    <ul>
+        <li class="logo"><img [routerLink]="['']" (click)="toggleCompetitions()" [src]="logo"></li>
+        <li *ngIf="!isLogeddIn()" (click)="login()" class="login-button"> Login with Google <fa-icon [icon]="loginIcon" class="icon"></fa-icon> </li>
+        <li class="welcome" *ngIf="isLogeddIn()">WELCOME BACK!</li>
+        <li class="profile" *ngIf="isLogeddIn()">
+            <span class="profile-wrapper">
+                <span class="profile-holder"><img [src]="user.picture" alt="profile-pic"> {{user.fullName}} </span>
+            </span>
+            <span class="logout-button" (click)="logout()"><fa-icon [icon]="loginIcon" class="icon"></fa-icon></span>
+        </li>
+    </ul>
 </div>

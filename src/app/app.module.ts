@@ -16,6 +16,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { MatchComponent } from './match/match.component';
 import {AuthService} from './auth/auth.service';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import {UserService} from './services/user.service';
 
 const appRoutes: Routes = [
     { path: '', component: MatchListComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
         MatchService,
         StandingsService,
         AuthService,
+        UserService,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     ],
     bootstrap: [AppComponent]

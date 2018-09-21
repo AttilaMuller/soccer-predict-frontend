@@ -4,6 +4,8 @@ import {MatchService} from '../services/match.service';
 import {CompetitionService} from '../services/competition.service';
 import {StandingsService} from '../services/standings.service';
 import {AuthService} from '../auth/auth.service';
+import {UserService} from '../services/user.service';
+import {User} from '../models';
 
 @Component({
     selector: 'app-navbar',
@@ -14,11 +16,14 @@ export class NavbarComponent implements OnInit {
 
     logo = 'assets/logo2.png';
     loginIcon = faSignInAlt;
+    user: User;
 
     constructor(private matchService: MatchService, private competitionService: CompetitionService,
-                private standingService: StandingsService, private authService: AuthService) { }
+                private standingService: StandingsService, private authService: AuthService,
+                private userService: UserService) { }
 
     ngOnInit() {
+        this.userService.userChanged.subscribe((user: User) => this.user = user)
     }
 
     toggleCompetitions() {

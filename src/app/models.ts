@@ -49,11 +49,10 @@ export interface Score {
     };
 }
 
-
 export interface User {
-    id: string;
-    googleId?: string;
-    givenName?: string;
-    familyName?: string;
-    pictureUrl?: string;
+    fullName: string;
+    firstName: string;
+    lastName: string;
+    picture: string;
+    gid: string;
 }

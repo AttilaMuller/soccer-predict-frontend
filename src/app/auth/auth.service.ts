@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as auth0 from 'auth0-js';
+import {HttpClient} from '@angular/common/http';
+import {UserService} from '../services/user.service';
 
 (window as any).global = window;
 
@@ -15,7 +17,7 @@ export class AuthService {
         scope: 'openid profile'
     });
 
-    constructor() {}
+    constructor(private http: HttpClient, private userService: UserService) {}
 
     public login(): void {
         this.auth0.authorize();
@@ -29,6 +31,7 @@ export class AuthService {
             } else if (err) {
                 console.log(err);
             }
+            this.userService.setUserInformation();
         });
     }
 

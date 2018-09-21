@@ -10,21 +10,31 @@
     margin-bottom: 0;
 }
 
-.top-menu img {
+.logo img {
     width: 55%;
     padding-right: -5px;
     padding-bottom: 10px;
     padding-top: 10px;
 }
 
-.top-menu img:hover {
+.logo img:hover {
     cursor: pointer;
     transform: scale(1.05);
-
 }
 
-.top-menu img:focus {
+.logo img:focus {
     outline:0;
+}
+
+.profile-holder {
+    font-size: 1vw;
+    border: solid 0.1rem;
+    border-radius: 35px;
+    padding: 15px 10px 15px 0;
+}
+
+.profile-wrapper {
+    padding-right: 10px;
 }
 
 .login-button {
@@ -39,4 +49,34 @@
     background-color: white;
     cursor: pointer;
     color: black;
+}
+
+.logout-button {
+    font-size: 1vw;
+    border: solid 0.1rem;
+    border-radius: 50px;
+    padding: 10px 20px;
+    -webkit-transition-duration: 280ms;
+}
+
+.logout-button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.profile img {
+    border: white solid 2px;
+    border-radius: 50%;
+    width: 54px;
+}
+
+.welcome {
+    animation: welcome 8s forwards ease;
+}
+
+@keyframes welcome {
+    0% {color: black}
+    20% {color: white}
+    100% { color: black; opacity: 0}
 }
