@@ -26,7 +26,7 @@ export class MatchComponent implements OnInit {
     ngOnInit() {
         this.matchService.matchChanged.subscribe((match: Match) => this.basicMatchInfo = match);
         this.route.params.subscribe((params: Params) => {
-            this.matchService.getMatch(params['id']);
+            this.matchService.getMatch(params['id'], params['date']);
         });
         this.allCompetitions = this.competitionService.getAllCompetitions();
     }

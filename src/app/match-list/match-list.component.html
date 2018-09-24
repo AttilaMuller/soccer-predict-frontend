@@ -30,7 +30,7 @@
             <img src="../../assets/three-dots.svg" alt="spinner">
         </div>
         <div class="row">
-            <div [routerLink]="['/matches', match.id]" *ngFor="let match of matches" class="col-sm-6 col-6 col-md-3 card-wrapper">
+            <div [routerLink]="['/matches', match.id, match.date]" *ngFor="let match of matches" class="col-sm-6 col-6 col-md-3 card-wrapper">
                 <div class="card">
                     <div class="card-body">
                         <div *ngIf="match.status == 'FINISHED'" >

@@ -20,7 +20,7 @@ import {UserService} from './services/user.service';
 
 const appRoutes: Routes = [
     { path: '', component: MatchListComponent },
-    { path: 'matches/:id', component: MatchComponent }
+    { path: 'matches/:id/:date', component: MatchComponent }
 ];
 
 @NgModule({

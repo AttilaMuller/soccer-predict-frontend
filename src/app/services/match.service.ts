@@ -38,8 +38,20 @@ export class MatchService {
             });
     };
 
-    getMatch(id: number) {
-        this.matchChanged.next(this.allMatches.find( (match: Match) => match.id == id))
+    getMatch(id: number, date: string) {
+        this.matchChanged.next(null);
+        let today = new Date().toISOString().slice(0, 10);
+        if (date.slice(0, 10) >= today) {
+            this.http.post('api/matches/next', this.mapCompetitions(this.competitions))
+                .subscribe((matches: Match[]) => {
+                    this.matchChanged.next(matches.find( (match: Match) => match.id == id));
+                });
+        } else {
+            this.http.post('api/matches/last', this.mapCompetitions(this.competitions))
+                .subscribe((matches: Match[]) => {
+                    this.matchChanged.next(matches.find( (match: Match) => match.id == id));
+                });
+        }
     }
 
 

@@ -17,13 +17,12 @@ export class StandingsService {
 
     constructor(private http: HttpClient, private competitionService: CompetitionService) {
         this.competitionService.competitionsChanged.subscribe((competitions: Competition[]) => this.competitions = competitions);
-        this.setUefaStanding();
     }
 
     setStanding = () => {
         this.standingsChanged.next([]);
         if(this.competitions[0].id == 2001){
-            return;
+            this.setUefaStanding();
         } else {
             this.http.get(`api/standings/${this.competitions[0].id}`)
                 .subscribe((standings: Standing[]) => this.standingsChanged.next(standings));
