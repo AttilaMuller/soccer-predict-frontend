@@ -56,3 +56,11 @@ export interface User {
     picture: string;
     gid: string;
 }
+
+export interface Comment {
+    userId: string;
+    fullName: string;
+    picture: string;
+    content: string;
+    date: string;
+}

@@ -36,5 +36,21 @@
                 </div>
             </div>
         </div>
+        <div class="comment-section">
+            <span (click)="toggleComment()" class="comment-button">Write a comment <fa-icon [icon]="commentIcon" class="icon"></fa-icon></span>
+            <div *ngIf="commentToggled" class="comment-input">
+                <textarea (keyup.enter)="sendComment()" id="commentValue" [(ngModel)]="commentValue" autofocus rows="5" cols="50" placeholder="Write a comment..."></textarea>
+            </div>
+            <div *ngIf="commentsEmpty" class="spinner">
+                <img src="../../assets/three-dots.svg" alt="spinner">
+            </div>
+            <div *ngIf="!commentsEmpty" class="comments">
+                <div *ngFor="let comment of comments" class="comment">
+                    {{comment.fullName}}
+                    {{comment.date}}
+                    {{comment.content}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

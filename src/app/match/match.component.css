@@ -69,6 +69,35 @@
     padding-left: 10px;
 }
 
+.comment-button {
+    font-size: 0.7vw;
+    border: solid 0.1rem;
+    border-radius: 50px;
+    padding: 10px 20px;
+    -webkit-transition-duration: 280ms;
+}
+
+.comment-button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+}
+
+.comment-section {
+    padding-top: 15px;
+}
+
+.comment-input {
+    padding-top: 15px;
+}
+
+.comment-input textarea{
+    color: white;
+    background: black;
+    font-size: 0.8vw;
+    animation: flip 0.4s forwards ease;
+}
+
 @keyframes flip {
     0% {transform: scaleX(-1); opacity: 0;}
     50%{transform: scale(1.4); opacity: 80%}

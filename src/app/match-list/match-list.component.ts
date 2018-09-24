@@ -4,6 +4,7 @@ import {MatchService} from '../services/match.service';
 import {Competition, Match} from '../models';
 import {CompetitionService} from '../services/competition.service';
 import {StandingsService} from '../services/standings.service';
+import {CommentService} from '../services/comment.service';
 
 @Component({
     selector: 'app-match-list',

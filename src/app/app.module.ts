@@ -17,6 +17,8 @@ import { MatchComponent } from './match/match.component';
 import {AuthService} from './auth/auth.service';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {UserService} from './services/user.service';
+import {CommentService} from './services/comment.service';
+import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
     { path: '', component: MatchListComponent },
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
         NgbModule,
         FontAwesomeModule,
         HttpClientModule,
+        FormsModule,
         RouterModule.forRoot(appRoutes)
     ],
     providers: [
@@ -46,6 +49,7 @@ const appRoutes: Routes = [
         StandingsService,
         AuthService,
         UserService,
+        CommentService,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     ],
     bootstrap: [AppComponent]

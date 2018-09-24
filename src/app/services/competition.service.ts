@@ -15,8 +15,8 @@ export class CompetitionService {
         this.competitions.push(<Competition>{
             id: 2001,
             name: 'UEFA Champions League',
-            area: 'Europe',
-            pictureUrl: 'https://cdn3.iconfinder.com/data/icons/142-mini-country-flags-16x16px/32/flag-european-union2x.png'
+            area: 'World',
+            pictureUrl: '../../assets/world.png'
         });
         this.competitions.push(<Competition>{
             id: 2021,
