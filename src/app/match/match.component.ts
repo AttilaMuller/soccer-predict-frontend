@@ -1,9 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Competition, Match, Comment, User} from '../models';
 import {MatchService} from '../services/match.service';
 import {CompetitionService} from '../services/competition.service';
-import {faBolt, faCalendarAlt, faClock, faCommentAlt, faComments, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import {
+    faBolt,
+    faCalendarAlt,
+    faClock,
+    faCommentAlt,
+    faComments,
+    faInfoCircle,
+    faTrashAlt
+} from '@fortawesome/free-solid-svg-icons';
 import {CommentService} from '../services/comment.service';
 import {UserService} from '../services/user.service';
 
@@ -20,6 +28,7 @@ export class MatchComponent implements OnInit {
     infoIcon = faInfoCircle;
     commentsIcon = faComments;
     commentIcon = faCommentAlt;
+    trashIcon = faTrashAlt;
 
     basicMatchInfo: Match = null;
     allCompetitions: Competition[] = [];
@@ -64,6 +73,10 @@ export class MatchComponent implements OnInit {
         });
         this.commentToggled = false;
         this.commentValue = null;
+    }
+
+    deleteComment(matchId: number, comment: Comment) {
+        this.commentService.deleteComment(matchId, comment);
     }
 
 }

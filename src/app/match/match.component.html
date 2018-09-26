@@ -41,14 +41,24 @@
             <div *ngIf="commentToggled" class="comment-input">
                 <textarea (keyup.enter)="sendComment()" id="commentValue" [(ngModel)]="commentValue" autofocus rows="5" cols="50" placeholder="Write a comment..."></textarea>
             </div>
+            <div class="comment-breaker"></div>
             <div *ngIf="commentsEmpty" class="spinner">
                 <img src="../../assets/three-dots.svg" alt="spinner">
             </div>
             <div *ngIf="!commentsEmpty" class="comments">
-                <div *ngFor="let comment of comments" class="comment">
-                    {{comment.fullName}}
-                    {{comment.date}}
-                    {{comment.content}}
+                <div *ngFor="let comment of comments" class="comment card">
+                    <div class="card-body">
+                        <div class="comment-info">
+                            {{comment.fullName}}
+                            {{comment.date.slice(0,10)}}
+                            {{comment.date.slice(11,16)}}
+                        </div>
+                        <div class="profile-pic">
+                            <img src="{{comment.picture}}" alt="">
+                        </div >
+                        {{comment.content}}
+                    </div>
+                    <div (click)="deleteComment(basicMatchInfo.id, comment)" *ngIf="user.gid == comment.userId" class="comment-edit"><fa-icon [icon]="trashIcon" class="icon"></fa-icon></div>
                 </div>
             </div>
         </div>

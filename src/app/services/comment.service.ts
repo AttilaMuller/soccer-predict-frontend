@@ -20,6 +20,12 @@ export class CommentService {
         });
     }
 
+    deleteComment(matchId: number, comment: Comment) {
+        this.http.post(`api/comment/del/${matchId}`, comment).subscribe((response: Response) => {
+            this.getComments(matchId);
+        });
+    }
+
     getComments(matchId: number) {
         this.commentsEmpty.next(true);
         this.http.get(`api/comment/${matchId}`).subscribe((comments: Comment []) => {

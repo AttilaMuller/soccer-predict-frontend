@@ -19,10 +19,11 @@ import {AuthInterceptor} from './auth/auth.interceptor';
 import {UserService} from './services/user.service';
 import {CommentService} from './services/comment.service';
 import {FormsModule} from '@angular/forms';
+import {AuthGuard} from './services/auth-guard.service';
 
 const appRoutes: Routes = [
     { path: '', component: MatchListComponent },
-    { path: 'matches/:id/:date', component: MatchComponent }
+    { path: 'matches/:id/:date', canActivate: [AuthGuard], component: MatchComponent }
 ];
 
 @NgModule({
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
         MatchService,
         StandingsService,
         AuthService,
+        AuthGuard,
         UserService,
         CommentService,
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
