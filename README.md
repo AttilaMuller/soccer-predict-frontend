@@ -1,4 +1,44 @@
-# SoccerPredict
+# Soccer Predict
+This project is deployed at https://soccerpredict-app.firebaseapp.com/. The API can be reached at https://soccerpredict.herokuapp.com/.
+
+## The application
+
+Soccer Predict is an application which main features include: Listing up to date football results, presenting next matches, making current football
+standings available.
+
+## Social aspect 
+
+Users are be able to login and chat about particular matches.
+
+# Project structure
+
+## Frontend
+
+The frontend is made with Angular 6, state management is done via services using RxJs.
+
+## Backend
+
+The backend API is made with NodeJs Express, particularly InversifyJs.
+
+## Database
+
+MongoDb is used to preserve match comments, and user information.
+
+## Authentication
+
+Authentication and authorization is managed by Auth0.
+
+## 3rd party API
+
+Match data is gathered from https://www.football-data.org/.
+
+## Development server
+
+In order to start the API, run npm start, navigate to http://localhost:8080/.
+
+
+
+# Agular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
@@ -14,14 +54,3 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
